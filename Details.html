@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Details</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+            <!--firbase scripts-->
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-storage.js"></script>
+    <style>
+        .navbar-right {
+            margin-right: 30px;
+        }
+
+        #detail-box {
+            background-color: #846075;
+            color:lightgoldenrodyellow;
+            padding: 25px 40px;
+            margin: 10px 65px;
+            margin-top:5%;
+            border-radius: 30px;
+        }
+        #detail-box h1{
+            letter-spacing: 10px;
+            font-size:32px;
+            font-family: monospace;
+        }
+        #detail-box hr{
+            border:2px solid #C0BCB5;
+            border-radius:5px;
+        }
+        table{
+            margin-top:40px;
+            padding:10px;
+            color:whitesmoke;
+            font-size:24px;
+        }
+        table th,td{
+            height:55px;
+            padding-left:45px
+        }
+        .d{
+            padding-left: 95px;
+        }
+    </style>
+</head>
+
+<body class="h-100">
+    <nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#" class="navbar-brand" style="color:whitesmoke; text-decoration-style: wavy;">Garbage
+                        Monitoring System
+                    </a>
+                </li>
+            </ul>
+            <div class="dropdown navbar-right">
+                <button id="option-id" class="btn btn-light dropdown-toggle bg-dark text-white" type="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="option-id">
+                    <a class="dropdown-item" href="MainPage.html">Home</a>
+                    <a class="dropdown-item" href="#">Account Details</a>
+                    <a class="dropdown-item" href="graph.html">Graph</a>
+                    <a class="dropdown-item" id="btn-logout" href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="detail-box">
+        <center>
+            <h1>ACCOUNT DETAILS</h1>
+        </center>
+        <hr>
+        <!--
+            border radius
+            margin
+            background color:  #5fbae9
+        -->
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td id="name" class="d"></td>
+                </tr>
+                <tr>
+                    <th>Phone No</th>
+                    <td id="phone" class="d"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td id="gender" class="d"></td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td id="address" class="d"></td>
+                </tr>
+                <tr>
+                    <th>Bio</th>
+                    <td id="bio" class="d"></td>
+                </tr>
+            </table>
+        
+    </div>
+    <script src="index2.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                var userid = firebase.auth().currentUser.uid;
+                firebase.database().ref("Users/" + userid).once('value')
+                    .then(function (snapshot) {
+                        if (!snapshot.val()) {
+                            window.location.href = "accsettings.html"
+                        } else {
+
+                            var userId = firebase.auth().currentUser.uid;
+
+                            firebase.database().ref("Users/" + userId).once('value')
+                                .then(function (snapshot) {
+                                    if (snapshot.val()) {
+                                        let user = snapshot.val();
+                                        console.table(user)
+                                        let address;
+                                        console.log(user.address)
+                                        document.getElementById("name").innerHTML = user.firstName + " "+ user.lastName;
+                                        document.getElementById("gender").innerHTML = user.gender;
+                                        document.getElementById("address").innerHTML = user.address;
+                                        document.getElementById("phone").innerHTML = user.phone;
+                                        document.getElementById("bio").innerHTML = user.bio;
+                                    }
+                                });
+                        }
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>

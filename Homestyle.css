@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.329), rgba(0, 0, 0, 0.329)),
+    url("./steve-johnson-Kr8Tc8Rugdk-unsplash.jpg") center/cover no-repeat;
+  position: relative;
+  background-attachment: fixed;
+}
+.banner {
+  position: absolute;
+  line-height: 1.5;
+  top: 40%;
+  left: 20%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.5rem;
+}
+.banner-btn,
+.main-btn {
+  display: inline-block;
+  background: black;
+  text-transform: uppercase;
+  padding: 0.8rem 1.2rem;
+  color: wheat;
+  font-weight: bold;
+  outline: 0.2rem solid black;
+  outline-offset: 4px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: 0.3s;
+}
+.banner-btn:hover {
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s;
+  color: white;
+}
+.menu-subtitle {
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+}
+.men-subtitle {
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: rgba(0, 0, 0, 0.417);
+  font-size: 40px;
+}
+.heading {
+  line-height: 4rem;
+}
+.about-img {
+  margin-top: 2rem;
+  float: right;
+  width: 50%;
+  height: 50%;
+  padding: 2rem;
+}
+.about-info {
+  float: right;
+  width: 50%;
+  padding: 2rem;
+}
+.about-img,
+.about-info {
+  padding: 1rem;
+}
+.about-picture-container {
+  font-size: small;
+}
+
+.about-picture {
+  width: 100%;
+  display: block;
+  transition: 0.5s;
+  border-radius: 1rem;
+}
+.about-picture-container:hover .about-picture {
+  opacity: 0.8;
+}
+.about-text {
+  margin: 1rem 0;
+  max-width: 20rem;
+  color: black;
+}
+.main-btn {
+  margin-left: 31rem;
+  margin-top: 5rem;
+}
+.contact-img,
+.contact-map {
+  padding: 1rem;
+  float: left;
+  width: 50%;
+  padding: 2rem;
+}
+
+.contact-iframe {
+  border-radius: 10px;
+  width: 100%;
+  height: 359px;
+}
+
+.contact-template {
+  height: 40vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+    url("./henry-co-cZpvuwwQQg0-unsplash.jpg") center/cover no-repeat;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.contact-title {
+  text-transform: uppercase;
+  font-family: Sketchimport;
+  color: white;
+  margin-top: 2.5rem;
+  line-height: 1.3;
+  text-align: center;
+  padding-top: 7%;
+  font-size: 20px;
+}
+.footer-open-hour {
+  background: url("./jilbert-ebrahimi-b0p818k8Ok8-unsplash.jpg") center center
+    no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  margin-top: 0;
+  padding: 90px 90px 90px 90px;
+  overflow: hidden;
+  position: relative;
+  z-index: 22;
+  right: 20px;
+  bottom: 20px;
+}
+
+.openhours-text {
+  padding-left: 10%;
+  padding-top: 10%;
+}
+
+.openhours-title {
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 26px;
+  font-weight: bolder;
+  color: #bd1220;
+  font-weight: 900;
+  opacity: 1;
+}
+
+.openhours-subtitle {
+  line-height: 3rem;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.7);
+  /* animation */
+}

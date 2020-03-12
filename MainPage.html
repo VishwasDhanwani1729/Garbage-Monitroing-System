@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Main Page</title>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-storage.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        <style>
+            .navbar-right {
+              margin-right: 30px;
+            }
+            * {
+              margin: 0;
+              padding: 0;
+            }
+            .header {
+              min-height: 100vh;
+              background: linear-gradient(rgba(0, 0, 0, 0.329), rgba(0, 0, 0, 0.329)),
+                url("./trash-near-door-1549528.jpg") center/cover no-repeat;
+                top:0;
+                left:0;
+              position: relative;
+              background-attachment: fixed;
+            }
+            .banner {
+              position: absolute;
+              line-height: 1.5;
+              top: 40%;
+              left: 20%;
+              text-align: center;
+              transform: translate(-3%, -50%);
+              letter-spacing: 0.5rem;                
+            }
+            .banner-btn,
+            .main-btn {
+              display: inline-block;
+              background: black;
+              text-transform: uppercase;
+              padding: 0.8rem 1.2rem;
+              color: wheat;
+              font-weight: bold;
+              outline: 0.2rem solid black;
+              outline-offset: 4px;
+              cursor: pointer;
+              margin-top: 1.5rem;
+              transition: 0.3s;
+            }
+            .banner-btn:hover {
+              cursor: pointer;
+              text-decoration: none;
+              transition: 0.2s;
+              color: white;
+            }
+          </style>
+</head>
+
+<body class="h-100">
+    <nav class="navbar navbar-expand-lg bg-dark text-white">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#" class="navbar-brand" style="color:whitesmoke; text-decoration-style: wavy;">Garbage
+                        Monitoring System
+                    </a>
+                </li>
+            </ul>
+            <div class="dropdown navbar-right">
+                <button id="option-id" class="btn btn-light dropdown-toggle bg-dark text-white" type="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="option-id">
+                    <a class="dropdown-item" href="#">Home</a>
+                    <a class="dropdown-item" href="Details.html">Account Details</a>
+                    <a class="dropdown-item" href="graph.html">Graph</a>
+                    <a class="dropdown-item" id="btn-logout" href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="header">
+        <div class="banner">
+            <h1 class="banner-title">Welcome Admin!</h1>
+
+            <h3 class="banner-subtitle">Start to CLEAN the world.</h3>
+            <a href="graph.html" class="banner-btn">Monitoring</a>
+        </div>
+    </header>
+
+    <script src="index2.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                window.location.href = "Home2d.html";
+            }
+
+        });
+    </script>
+</body>
+
+</html>

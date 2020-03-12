@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!--firbase scripts-->
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-storage.js"></script>
+    <style>
+          .navbar-right{
+              margin-right:30px;
+          }
+      </style>
+    <title>Mychart.js</title>
+  </head>
+  <body class="h-100">
+    <nav class="navbar navbar-expand-lg bg-dark text-white">
+      <div class="container-fluid">
+          <ul class="nav navbar-nav">
+              <li class="active">
+                  <a href="#" class="navbar-brand" style="color:whitesmoke; text-decoration-style: wavy;">Garbage
+                      Monitoring System
+                  </a>
+              </li>
+          </ul>
+          <div class="dropdown navbar-right">
+              <button id="option-id" class="btn btn-light dropdown-toggle bg-dark text-white" type="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Options
+              </button>
+              <div class="dropdown-menu" aria-labelledby="option-id">
+                  <a class="dropdown-item" href="MainPage.html">Home</a>
+                  <a class="dropdown-item" href="Details.html">Account Details</a>
+                  <a class="dropdown-item" href="#">Graph</a>
+                  <a class="dropdown-item" id="btn-logout" href="#">Logout</a>
+              </div>
+          </div>
+      </div>
+  </nav>
+  <div class="row h-100 bg-light">
+      <div class="col-lg-0 bg-secondary">
+          <ul class="nav flex-column">
+
+          </ul>
+      </div>
+      <div class="col-lg-12">
+          <div clas="container" id="container">
+
+          </div>
+
+      </div>
+  </div>
+    <div class="container" style="margin-top: 90px;">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+      let myChart = document.getElementById("myChart").getContext("2d");
+
+      let massPopChart = new Chart(myChart, {
+        type: "line", //bar,hor,pie
+        data: {
+          labels: ["5s", "10s", "15s", "20s", "25s", "30s"],
+          datasets: [
+            {
+              label: "Bin Full",
+              data: [10, 45, 30, 72, 62, 19],
+              backgroundColor: [
+                "rgba(0, 140, 255, 1)",
+                "rgba(255, 255, 1, 0)",
+                "rgba(255, 0, 0, 1)",
+                "rgba(255, 126, 255, 1)",
+                "rgba(115, 126, 255, 1)",
+                "rgba(0, 126, 255, 1)"
+              ],
+              borderWidth: 1,
+              borderColor: "#777",
+              hoverBorderWidth: 3,
+              hoverBorderColor: "#000",
+              lineTension: 0,
+              fill: false,
+              borderColor: "black",
+              backgroundColor: "transparent",
+              borderDash: [0, 0],
+              pointBorderColor: "red",
+              pointBackgroundColor: "rgba(255,150,0,0.5)",
+              pointRadius: 5,
+              pointHoverRadius: 10,
+              pointHitRadius: 30,
+              pointBorderWidth: 2,
+              pointStyle: "rectRounded"
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "Garbage Monitoring Graph",
+            fontSize: 25
+          },
+          legend: {
+            labels: {
+              fontColor: "#000"
+            }
+          }
+        }
+      });
+    </script>
+    <script src="index2.js"></script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                window.location.href = "Home2d.html";
+            }
+
+        });
+    </script>
+</body>
+</html>

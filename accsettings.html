@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Account Details</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-storage.js"></script>
+        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        
+        <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="design_files/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+            
+            <!-- STYLE CSS -->
+    <link rel="stylesheet" href="design_files/css/style.css">
+
+</head>
+<body>
+    <div class="wrapper" style="background-image: url('trash.jpg');">
+        <div class="inner">
+            <div class="image-holder">
+                <img src="bottle.jpg" >
+            </div>
+            <form action="">
+                <h3>Account Details</h3>
+                <div class="form-group">
+                    <input type="text" id="firstname" placeholder="First Name" class="form-control">
+                    <input type="text" id="lastname" placeholder="Last Name" class="form-control">
+                </div>
+                
+                <div class="form-wrapper">
+                    <input type="number" id="phone" placeholder="Mobile Number" class="form-control">
+                    <i class="zmdi zmdi-tablet-mac"></i>
+                </div>
+                <div class="form-wrapper">
+                    <select name="" id="gender" class="form-control">
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <i class="zmdi zmdi-caret-down" style="font-size:17px"></i>
+                </div>
+                
+                <div class="form-wrapper">
+                    <input type="text" id="bio" placeholder="Something about you" class="form-control">
+                    <i class="zmdi zmdi-account-box-mail"></i>
+                </div>
+                <div class="form-wrapper">
+                    <input type="text" id="address" placeholder="Address" class="form-control">
+                    <i class="zmdi zmdi-pin"></i>
+                </div>
+                <div class="form-group container-login100-form-btn">
+                    <button id="btn-update" type="button" href="MainPage.html">Update & Set
+                        <i class="zmdi zmdi-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="index2.js">
+    </script>
+    <script>
+        firebase.auth().onAuthStateChanged(function(user){
+            if(user){
+                var userid=firebase.auth().currentUser.uid;
+                firebase.database().ref("Users/"+userid).once('value')
+                .then(function(snapshot){
+                    if(snapshot.val()){
+                        window.location.href="Details.html";
+                    }
+                });
+            }
+
+        });
+    </script>
+
+</body>
+</html>

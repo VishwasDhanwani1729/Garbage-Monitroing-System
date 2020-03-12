@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <style>
+    /* --------------------*/
+      html{
+        scroll-behavior: smooth;
+      }
+
+    /* --------------------*/
+    
+          * {
+      box-sizing: border-box;
+    }
+
+    /* Full-width input fields */
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* Add a background color when the inputs get focus */
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for all buttons */
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    button:hover {
+      opacity: 1;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+      padding: 14px 20px;
+      background-color: #f44336;
+    }
+
+    /* Float cancel and signup buttons and add an equal width */
+    .cancelbtn,
+    .signupbtn {
+      float: left;
+      width: 50%;
+    }
+
+    /* Add padding to container elements */
+    .container {
+      padding: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 60%; /* Full width */
+      height: 70%; /* Full height */
+      /*overflow: auto;  Enable scroll if needed */
+      background-color: rgba(71, 78, 93, 0.4);
+      /*opacity: 0.1;*/
+      /*padding-top: 50px;*/
+      margin: 7% 20%;
+    }
+
+    /* Modal Content/Box 
+    .modal-content {
+      /*background-color: #fefefe;
+      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered 
+      /*border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size 
+    }*/
+
+    /* Style the horizontal ruler */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+
+    /* The Close Button (x) */
+    .close {
+      position: absolute;
+      right: 35px;
+      top: 15px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #f1f1f1;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #f44336;
+      cursor: pointer;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    /* Change styles for cancel button and signup button on extra small screens */
+    @media screen and (max-width: 300px) {
+      .cancelbtn,
+      .signupbtn {
+        width: 100%;
+      }
+    }
+
+      @import url("https://fonts.googleapis.com/css?family=Poppins");
+
+      /* BASIC */
+
+      
+
+      body {
+        font-family: "Poppins", sans-serif;
+        height: 100vh;
+      }
+
+      a {
+        color: #92badd;
+        display: inline-block;
+        text-decoration: none;
+        font-weight: 400;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 40px 8px 10px 8px;
+        color: #cccccc;
+      }
+
+      /* STRUCTURE */
+
+      .wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        min-height: 100%;
+        padding: 20px;
+      }
+
+      #formContent {
+        -webkit-border-radius: 10px 10px 10px 10px;
+        border-radius: 10px 10px 10px 10px;
+        background: #fff;
+        padding: 30px;
+        width: 90%;
+        max-width: 450px;
+        position: relative;
+        padding: 0px;
+        -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      #formFooter {
+        background-color: #f6f6f6;
+        border-top: 1px solid #dce8f1;
+        padding: 25px;
+        text-align: center;
+        -webkit-border-radius: 0 0 10px 10px;
+        border-radius: 0 0 10px 10px;
+      }
+
+      /* TABS */
+
+      h2.inactive {
+        color: #cccccc;
+      }
+
+      h2.active {
+        color: #0d0d0d;
+        border-bottom: 2px solid #5fbae9;
+      }
+
+      /* FORM TYPOGRAPHY*/
+
+      input[type="button"],
+      input[type="submit"],
+      input[type="reset"] {
+        background-color: #56baed;
+        border: none;
+        color: white;
+        padding: 15px 80px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 13px;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+        box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+        margin: 5px 20px 40px 20px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      input[type="button"]:hover,
+      input[type="submit"]:hover,
+      input[type="reset"]:hover {
+        background-color: #39ace7;
+      }
+
+      input[type="button"]:active,
+      input[type="submit"]:active,
+      input[type="reset"]:active {
+        -moz-transform: scale(0.95);
+        -webkit-transform: scale(0.95);
+        -o-transform: scale(0.95);
+        -ms-transform: scale(0.95);
+        transform: scale(0.95);
+      }
+
+      input[type="email"] {
+        background-color: #f6f6f6;
+        border: none;
+        color: #0d0d0d;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        width: 85%;
+        border: 2px solid #f6f6f6;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+      }
+      input[type="password"] {
+        background-color: #f6f6f6;
+        border: none;
+        color: #0d0d0d;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        width: 85%;
+        border: 2px solid #f6f6f6;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+      }
+
+
+      input[type="email"]:focus {
+        background-color: #fff;
+        border-bottom: 2px solid #5fbae9;
+      }
+      input[type="password"]:focus {
+        background-color: #fff;
+        border-bottom: 2px solid #5fbae9;
+      }
+
+      input[type="email"]:placeholder {
+        color: #cccccc;
+      }
+      input[type="password"]:placeholder {
+        color: #cccccc;
+      }
+      /* ANIMATIONS */
+
+      /* Simple CSS3 Fade-in-down Animation */
+      .fadeInDown {
+        -webkit-animation-name: fadeInDown;
+        animation-name: fadeInDown;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      }
+
+      @-webkit-keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+        }
+        100% {
+          opacity: 1;
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+
+      @keyframes fadeInDown {
+        0% {
+          opacity: 0;
+          -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+        }
+        100% {
+          opacity: 1;
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+
+      /* Simple CSS3 Fade-in Animation */
+      @-webkit-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @-moz-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .fadeIn {
+        opacity: 0;
+        -webkit-animation: fadeIn ease-in 1;
+        -moz-animation: fadeIn ease-in 1;
+        animation: fadeIn ease-in 1;
+
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+
+        -webkit-animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        animation-duration: 1s;
+      }
+
+      .fadeIn.first {
+        -webkit-animation-delay: 0.4s;
+        -moz-animation-delay: 0.4s;
+        animation-delay: 0.4s;
+      }
+
+      .fadeIn.second {
+        -webkit-animation-delay: 0.6s;
+        -moz-animation-delay: 0.6s;
+        animation-delay: 0.6s;
+      }
+
+      .fadeIn.third {
+        -webkit-animation-delay: 0.8s;
+        -moz-animation-delay: 0.8s;
+        animation-delay: 0.8s;
+      }
+
+      .fadeIn.fourth {
+        -webkit-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+        animation-delay: 1s;
+      }
+
+      /* Simple CSS3 Fade-in Animation */
+      .underlineHover:after {
+        display: block;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 2px;
+        background-color: #56baed;
+        content: "";
+        transition: width 0.2s;
+      }
+
+      .underlineHover:hover {
+        color: #0d0d0d;
+      }
+
+      .underlineHover:hover:after {
+        width: 100%;
+      }
+
+      /* OTHERS */
+
+      *:focus {
+        outline: none;
+      }
+
+      #icon {
+        width: 60%;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      a:hover{
+        cursor: pointer;
+      }
+      /*####################################*/
+      #team {
+  padding: 40px 0;
+  border-radius: 30px;
+  height: 700px;
+  background: url("./yellow-and-and-blue-colored-pencils-1762851.jpg")center/cover no-repeat;
+}
+
+#team .title-subheading {
+  color: whitesmoke;
+   line-height: 3rem;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+ 
+}
+
+#team .title-text {
+  border-left: 3px solid #00a7e1;
+}
+
+.team-member {
+  text-align: center;
+  
+  border: 1px solid #2e282a;
+  border-radius: 20px;
+  background: #292929;
+  color:white;
+  transition: background 1s ease;
+  margin: 20px 0;
+}
+
+
+
+
+
+
+.team-member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-top: -35px;
+}
+
+#team-center {
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.team-member h2 {
+  text-transform: capitalize;
+}
+
+.team-member h5 {
+  margin: 10px 0;
+  text-transform: uppercase;
+}
+
+.team-member hr {
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid #ffc914;
+}
+
+.team-member p {
+  line-height: 2;
+  
+  max-width: 270px;
+  margin: 10px;
+}
+
+.team-member-footer {
+  padding: 20px 0;
+  background: whitesmoke;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.title-icon .fa{
+  font-size: 30px;
+  
+}
+.team-member-footer .fa {
+  font-size: 30px;
+  color: #ffc914; 
+  transition: color 1s ease;
+}
+
+
+.team-member-footer .fa-facebook:hover,.fa-twitter:hover,.fa-instagram:hover,.fa-github:hover {
+  /* color: #00a7e1; */color:black
+}
+
+.title-heading{
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 26px;
+  font-weight: bolder;
+  color: whitesmoke;
+  font-weight: 900;
+  opacity: 1;
+}
+
+/*
+@media screen and (min-width:576px) {
+  #team-center {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .team-member {
+    flex: 0 0 calc(50% - 1em);
+    )
+  }
+}
+
+@media screen and (min-width:992px) {
+
+  .team-member {
+    flex: 0 0 calc(25% - 1em);
+
+  }
+}
+*/
+
+@media screen and (min-width:576px) {
+  #team-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+  }
+}
+
+@media screen and (min-width:992px) {
+  #team-center {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.response-title {
+  color: #bd1220;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+}
+
+input[type="feedback"],
+textarea {
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 12px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#notype {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #f9f9f9;
+  margin: 8px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+}
+input[type="submit"] {
+  width: 30%;
+  background-color: none;
+  color: black;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 14px 15px;
+  margin: 8px 0;
+  border: 1px solid black;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: black;
+  color: white;
+  opacity: 1;
+  border-radius: 6px;
+  box-shadow: 0 14px 18px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+#feedback1{
+  padding: 40px 0;
+  border-radius: 30px;
+  margin-top: 30px;
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.821)), url("./feedback.jpg")center/cover no-repeat;
+}
+      
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Homestyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <!--new -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-storage.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    
+
+    <style> 
+      /* Modal Content/Box */
+      .modal-content {
+        /*background-color: #fefefe;*/
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        /*border: 1px solid #888;*/
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" id="hdrv">
+      <section>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Garbage Monitering System</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#hdrv">Home</a></li>
+
+              <li><a href="#abtsv">About Us</a></li>
+              <li><a href="#id-contact">Contact Us</a></li>
+              <li><a href="#team">Our Team</a></li>
+              <li><a href="#feedback1">Feedback</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <!-- forms starts here -->
+
+
+              <li>
+                <!-- <a href="" onclick="document.getElementById('id01').style.display='block'"style="width:auto;"
+                  ><span class="glyphicon glyphicon-user"></span> Sign Up/Log In</a
+                > -->
+
+
+                <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+                  Sign Up
+                </a>
+                
+                <div id="id01" class="modal">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="close" style="font-size: 40px; color: #fff"; title="Close Modal">&times;</span>
+                  <form class="modal-content" action="" style="box-shadow: none; background-color:rgb(0,0,0,0); border:0px;">
+                    <div class="wrapper fadeInDown">
+                      <div id="formContent">
+                        <!-- Tabs Titles -->
+                        <h2 class="active">Sign Up</h2>
+                        
+                
+                        <!-- Icon -->
+                        <div class="fadeIn first">
+                        </div>
+                
+                        <!-- Login Form -->
+                        <form>
+                          <input type="email" id="emailup" class="fadeIn second" name="login" placeholder="Email" required />
+                          <input type="password" id="passwordup" class="fadeIn third" name="login" placeholder="Password" required/>
+                          <input type="password" id="confirmPasswordup" class="fadeIn third" name="login" placeholder="Confirm Password" required />
+
+                          <!--for account details facing problem-->
+                          <a onclick="document.getElementById('id04').style.display='block'" style="width:auto;">
+                            <input type="button" id="btn-signup" class="fadeIn fourth" value="Sign Up" />  
+                          </a>
+                        </form>
+                        <!-- Remind Passowrd -->
+                        <div id="formFooter">
+                          <a class="underlineHover" href="#" onclick="document.getElementById('id02').style.display='block'; 
+                          document.getElementById('id01').style.display='none'">Already have an Account?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+              </li>
+
+              
+              <li>
+                <a onclick="document.getElementById('id02').style.display='block'" style="width:auto;">
+                  Log In
+                </a>
+                
+                <div id="id02" class="modal">
+                  <span onclick="document.getElementById('id02').style.display='none'" class="close" style="font-size: 40px; color: #fff" title="Close Modal">&times;</span>
+                  <form class="modal-content" action="" style="box-shadow: none; background-color:rgb(0,0,0,0); border:0px;">
+                    <div class="wrapper fadeInDown">
+                      <div id="formContent">
+                        <!-- Tabs Titles -->
+                        <h2 class="active">Login</h2>
+                
+                        <!-- Icon -->
+                        <div class="fadeIn first">
+                        </div>
+                
+                        <!-- Login Form -->
+                        <form>
+                          <input type="email" id="emailin" class="fadeIn second" name="login" placeholder="Email" required/>
+                          <input type="password" id="passwordin" class="fadeIn third" name="login" placeholder="Password" required/>
+                          <input type="button" id="btn-signin" class="fadeIn fourth" value="Login" />
+                          <!-- <button id="btn-signin" type="button" >Log In -->
+                        </button>
+                        </form>
+                
+                        <!-- Remind Passowrd -->
+                        <div id="formFooter">
+                          <a class="underlineHover" href="forgotpassword.html">Forgot Password?</a>
+                          <div></div>
+                          <a class="underlineHover" href="#" onclick="document.getElementById('id02').style.display='none';
+                          document.getElementById('id01').style.display='block'">New User?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- forms ends here -->
+              </li>
+
+
+              <!-- <li>
+              
+                <a onclick="document.getElementById('id03').style.display='block'" style="width:auto;">
+                  Driver
+                </a>
+              
+                <div id="id03" class="modal">
+                  <span onclick="document.getElementById('id03').style.display='none'" class="close" style="font-size: 40px; color: #fff" title="Close Modal">&times;</span>
+                  <form class="modal-content" action="" style="box-shadow: none; background-color:rgb(0,0,0,0); border:0px;">
+                    <div class="wrapper fadeInDown">
+                      <div id="formContent">
+                        <!-- Tabs Titles -->
+                        <!-- <h2 class="active">d</h2> -->
+              
+                        <!-- Icon -->
+                        <!-- <div class="fadeIn first"> -->
+
+                        <!-- </div> -->
+              
+                        <!-- Login Form -->
+                        <!-- <form>
+                          <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" />
+                          <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" />
+                          <input type="submit" class="fadeIn fourth" value="Log In" />
+                        </form>-->
+              
+                        
+                        <!-- <div id="formFooter">
+                          <a class="underlineHover" href="#">Forgot Password?</a>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div> -->
+              
+
+              <!-- </li> -->
+                <!-- forms ends here -->
+              
+            </ul>
+          </div>
+        </nav>
+      </section>
+      <div class="banner">
+        <h1 class="banner-title">Garbage Monitoring System</h1>
+
+        <h3 class="banner-subtitle">We Believe In clean.</h3>
+        <a href="skills.html" class="banner-btn">Explore</a>
+      </div>
+    </header>
+    <section class="objective" style="background-color: #f9f9f9c2;" id="abtsv">
+      <center>
+        <h2 class="men-subtitle" id="abo">O U R &nbsp;&nbsp;O B J E C T I V E</h2>
+      </center>
+      
+      <article class="about-img">
+        <div class="about-picture-container" style="box-shadow: -9px -9px 16px rgb(163, 177, 198, 1),
+          -9px -9px 16px rgba(255, 255, 255, 1); transform-style: preserve-3d;">
+          <img src="./goetz-heinen-S479F-7A7zY-unsplash.jpg" alt="" class="about-picture" />
+        </div>
+      </article>
+      <article class="about-info">
+        <!-- section title -->
+        <div>
+          <!-- <img src="preloader.gif" height="40px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <p class="theory">
+            <h3 class="heading" style="color:rgba(0, 0, 0, 0.413); text-align: center; margin-top: 6rem;"><q>The main
+                objective of the project is to design, develop and
+                implement automated garbage monitoring system.</q></h3>
+      
+            <br>
+      
+          </p>
+          <!--end section title -->
+          <p class="about-text">
+            <ol class="list" style="text-align:center ; font-size: 20px;line-height: 4rem;">
+              <li> Analyze the works performed so far to monitor the garbage.</li>
+              <li>Propose and design a garbage monitoring system that can be controlled with GUI.</li>
+              <li>Simulate the design using Arduino microcontroller.</li>
+              <li>Implement the simulated design along with hardware and software .</li>specifications.
+            </ol>
+          </p>
+      
+          <a href="about.html" class="main-btn" style="text-decoration: none;">learn more</a>
+      </article>
+      <div style="clear: both;"></div>
+      </section>
+      <section class="contact-template" id="id-contact">
+        <center>
+          <h3 class="menu-subtitle"><br><br>
+            L O C A T E &nbsp;&nbsp;U S
+          </h3>
+        </center>
+      </section>
+    
+    <div class="contact" style="background-color: #f9f9f946;">
+        <section class="about-section-center-clearfix" style="display: inline;">
+    
+            <article class="contact-map">
+                <!--left column-->
+                <br>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.435760888755!2d72.81818205068974!3d22.60019718757948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7571b60b6c28001b!2sDevang%20Patel%20Institute%20of%20Advance%20Technology%20and%20Research!5e0!3m2!1sen!2sin!4v1578498063542!5m2!1sen!2sin"
+                    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                    class="contact-iframe"></iframe>
+                <br><br>
+               
+                  <br>
+                  
+                </div>
+                </section>
+            </article>
+            <!-- right column -->
+            <article class="contact-img" >
+                <!-- second column -->
+                <br>
+                <br>
+                <!-- section title -->
+                <div class="footer-open-hour" style="box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.301); transform-style: preserve-3d;height:360px">
+                    <div class="openhour-text">
+                        <h3 class="openhours-title">
+                            W O R K I N G&nbsp;&nbsp;H o u r s</h3><br>
+                        <p class="openhours-subtitle">
+                            <strong>Monday: Closed</strong><br>
+                            <strong>Tuesday to Friday</strong><br>
+                            7:00 AM - 9:00 PM<br>
+                            <strong>Saturday & Sunday</strong><br>
+                            11:00 AM - 10:00 PM
+                        </p>
+                    </div>
+                </div>
+    
+    
+                <!--end section title -->
+            </article>
+            <div style="clear: both;"></div>
+            
+             <!--team-->
+            <section id="team">
+              <!--  title-->
+              <div class="title">
+                <center><div class="title-icon">
+                  <i class="fa fa-users"></i>
+                </div>
+                <div class="title-text">
+                  <h2 class="title-heading" >meet our team</h2>
+                  <p class="title-subheading">Lorem ipsum dolor sit amet.</p></center>
+                </div>
+              </div>
+            
+              <!--end of  title-->
+              <div id="team-center">
+                <article class="team-member" style="box-shadow: 9px 9px 16px rgb(0, 0, 0, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.301);" >
+                  <center><img src="VSD.jpeg" alt="img"></center> 
+                  <h2>VISHWAS DHANWANI</h2>
+                  <h5>developer</h5>
+                  <hr>
+                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit delectus obcaecati accusamus esse blanditiis
+                    fugiat
+                    repellendus similique, nesciunt quod consequatur!</p></center>
+                  <div class="team-member-footer">
+                    <a href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    
+                    <a href="#">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-github"></i>
+                    </a>
+                  </div>
+                </article>
+                <article class="team-member" style="box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.6),
+    -9px -9px 16px rgba(255, 237, 237, 0.301);">
+                  <center><img src="DSC_0088.jpg" alt="img" ></center>
+                  <h2>DHRUVAL GANDHI</h2>
+                  <h5>developer</h5>
+                  <hr>
+                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit delectus obcaecati accusamus esse blanditiis
+                    fugiat
+                    repellendus similique, nesciunt quod consequatur!</p></center>
+                  <div class="team-member-footer">
+                    <a href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-github"></i>
+                    </a>
+                  </div>
+                </article>
+                <article class="team-member" style="box-shadow: 9px 9px 16px rgb(0, 0, 0, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.301);">
+                  <center><img src="jani.jpg" alt="img" ></center>
+                  <h2>DISHANK JANI</h2>
+                  <h5>developer</h5>
+                  <hr>
+                  <center><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit delectus obcaecati accusamus esse blanditiis
+                    fugiat
+                    repellendus similique, nesciunt quod consequatur!</p></center>
+                  <div class="team-member-footer">
+                    <a href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fa fa-github"></i>
+                    </a>
+                  </div>
+                </article>
+                
+              </div>
+           
+        <section  id="feedback1">
+          <center>
+            <!--Response-->
+    <div class="back">
+      <section class="about-section-center-clearfix" style="display: inline; ">
+  
+        <article class="about-img">
+          
+          <h3 class="response-title" style="color: white;">YOUR RESPONSE</h3>
+        <br>
+        <form action="#">
+          <label for="fname" style="color: white;">Name</label>
+          <input
+            type=""
+            id="notype"
+            name="firstname"
+            placeholder="Full Name"
+            required="Name"
+          /><label for="City" style="color: white;">City</label>
+          <input type="" id="notype" name="cityname" placeholder="City Name" required="City Name" />
+  
+          <label for="mail" style="color: white;">E-Mail</label>
+          <input
+            type=""
+            id="notype"
+            name="mail"
+            placeholder="E Mail"
+            required="Email"
+          />
+  
+          
+  
+          <label for="subject" style="color: white;">Your Reviews</label>
+          <textarea
+            id="feedback"
+               name="feedback"
+            placeholder="Your Thoughts"
+            style="height:120px"
+          ></textarea>
+  
+        <p align="right"><input type="submit" value="Submit"></p>
+        </form>
+        </article>
+        
+        <!-- second column -->
+        <article class="about-info">
+          <!--end section title -->
+        </article>
+        <div style="clear: both;"></div>
+      </section>
+    </div></p>
+  
+          </center>
+        </section>
+        </section>
+        
+
+        <script>
+          // Get the modal
+          var modal = document.getElementById('id01');
+          var modal = document.getElementById("id03");
+          var modal = document.getElementById("id02");
+
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function (event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+        </script>
+      <script src="index2.js"></script>
+      <script>
+        firebase.auth().onAuthStateChanged(function(user){
+            if(user){
+              window.location.href="MainPage.html";
+            }
+        });
+    </script>
+      
+</body>
+</html>
